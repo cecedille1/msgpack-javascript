@@ -216,7 +216,9 @@ function encode(rv,      // @param ByteArray: result
                     rv.push(0xc6, size >>> 24, (size >> 16) & 0xff,
                             (size >>  8) & 0xff, size & 0xff);
                 }
-                Array.prototype.push.apply(rv, mix);
+                mix.forEach(function(x) {
+                    rv.push(x);
+                });
                 break;
             }
             if (++depth >= _MAX_DEPTH) {
